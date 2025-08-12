@@ -49,8 +49,10 @@ io.on("connection", (socket) => {
     io.emit('chat', safeMsg);  
 
     }
-       
-   io.emit('chat', msg);
+
+  else{
+   io.emit('chat', msg);       
+}
   });
 
 socket.on('clear', (msg) => {
