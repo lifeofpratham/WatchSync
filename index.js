@@ -41,11 +41,16 @@ io.on("connection", (socket) => {
   });
 
   socket.on('chat', (msg) => {
+   if (msg != ""){
     const getmsg = escape(msg);
 
     const safeMsg = `<strong>${socket.username}</strong>: ${getmsg}<span class="timestamp">${new Date().toLocaleTimeString()}</span>`;
 
-    io.emit('chat', safeMsg);
+    io.emit('chat', safeMsg);  
+
+    }
+       
+   io.emit('chat', msg);
   });
 
 socket.on('clear', (msg) => {
