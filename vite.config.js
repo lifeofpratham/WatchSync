@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite'
-import path from 'path'
 
 export default defineConfig({
-  root: path.resolve(__dirname, 'public'),
+  root: 'public', // yaha bata de ki index.html public me hai
   build: {
-    outDir: '../dist'
+    outDir: '../dist', // build dist root pe nikle
+    emptyOutDir: true
   }
 })
