@@ -1,0 +1,111 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: #fff;
+}
+
+.container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    position: absolute;
+    bottom: 180px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+footer{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    bottom: 100px;
+    justify-content: center;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#username{
+    /* padding-left: 25%; */
+    font-family: monospace;
+    font-size: 24px;
+    width: 38vw;
+    max-width: 278px;
+    color: #fff;
+    height: auto;
+    background-color: transparent;
+    border-right: 1px;
+    border-left: none;
+    border-top: none;
+    outline: none;
+    text-align: center;
+    
+}
+
+#username:focus::placeholder{
+
+  color: transparent;
+
+    
+}
+
+button{
+    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 10px;
+    font-size: 24px;
+    max-width: auto;
+    color: #fff;
+    height: auto;
+    background-color: transparent;
+    border-right: none;
+    border-top: 3px;
+    border-left: none;
+    outline: none;
+    cursor: pointer;
+}
+
+/* From Uiverse.io by JkHuger */ 
+.rainbow-hover {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ff7576;
+  background-color: #111;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 12px 24px;
+  position: relative;
+  line-height: 24px;
+  border-radius: 9px;
+  box-shadow: 0px 1px 2px #111,
+    0px 4px 16px #111;
+  transform-style: preserve-3d;
+  transform: scale(var(--s, 1)) perspective(600px)
+    rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  perspective: 600px;
+  transition: transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+
+}
+
+.sp {
+  background: linear-gradient(
+      90deg,
+      #866ee7,
+      #ea60da,
+      #ed8f57,
+      #fbd41d,
+      #2cca91
+    );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  display: block;
+}
+
+.rainbow-hover:active {
+  transition: 0.3s;
+  transform: scale(0.93);
+}

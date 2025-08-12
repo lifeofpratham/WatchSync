@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <meta name="description" content="WatchSync lets you watch videos in perfect sync with friends while chatting live. Host or join rooms, control playback, and enjoy a shared viewing experience." />
+  <meta name="keywords" content="WatchSync, watch videos together, synced video player, group watch, video sync app, online movie nights, watch party" />
+  <meta name="author" content="WatchSync Owner" />
+
+  <title>WatchSync - Your online theatre</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="styles/controls.css">
+  <script>
+    window.userName = sessionStorage.getItem("userName");
+    if (!userName) {
+      window.location.replace("main.html"); // Use replace to avoid back nav
+    }
+
+    </script>
+    <script src="scripts/script.js" defer></script>
+</head>
+
+<body>
+  <header>
+   <span style="display: flex;"> 
+<label class="burger" for="burger">
+  <input type="checkbox" id="burger">
+  <span></span>
+  <span></span>
+  <span></span>
+</label>
+    <img width="200" src="logo.png" /></span>
+    <span class="toggleContainer">
+    <label class="switch">
+      <input type="checkbox" id="isHost" />
+      <span class="slider"></span>
+    </label>
+    <span class="switch-label">Host</span>
+  </span>
+
+  </header>
+
+  
+  <div id="mainContainer">
+
+    <div id="playerContainer" onmousemove="">
+       
+      <video id="videoPlayer" playsinline height="100%" style="background-color: #000"
+        controlslist="nodownload nofullscreen noremoteplayback" preload="metadata" >
+        <source src="video.mp4" type="video/mp4" />
+        Your browser does not support HTML5 video.
+      </video>
+
+       <div id="seek-feedback" class="visible"></div>
+
+      <div class="all-controls" id="playercontrols" onmousemove="showControls()">
+        
+         <div id="leftScreen" style="position: absolute;width: 35%;z-index: 5;height: 60%;top: 20%;cursor: auto;"></div>
+       <div id="rightScreen" style="position: absolute;width: 35%;z-index: 5;height: 60%;top: 20%; right:0;cursor: auto;"></div>
+        <div class="video-center-controls" style="z-index: 6;">
+          <div class="skip-btn fas fa-backward" id="skip-backward" onclick="skip(this, -5)"></div>
+          <div class="play-btn fas fa-play" style="font-size: 52px;" id="centerPlayPause"
+            onclick="toggleCenterPlayPause(this)"></div>
+          <div class="skip-btn fas fa-forward" id="skip-forward" onclick="skip(this, 5)"></div>
+        </div>
+
+        
+        <div class="progress-container" style="z-index: 60;">
+          <div class="time-info">
+            <div id="currentTime">00:00</div>
+            <div id="remainingTime">-00:00</div>
+          </div>
+
+          <div class="progressbar-container" style="z-index: 600;">
+            <div class="buffered-bar"></div>
+            <div class="played-bar"></div>
+            <input type="range" id="seekBar" value="0" min="0" max="100" step="0.1" />
+          </div>
+        </div>
+        <div class="other-controls" style="z-index: 60;">
+
+
+
+          <div class="playback-options">
+            <button class="playback-speed-icon">
+              <svg viewBox="0 0 24 24" style="color: white;" width="21.5">
+                <path
+                  d="M10,8v8l6-4L10,8L10,8z M6.3,5L5.7,4.2C7.2,3,9,2.2,11,2l0.1,1C9.3,3.2,7.7,3.9,6.3,5z            M5,6.3L4.2,5.7C3,7.2,2.2,9,2,11 l1,.1C3.2,9.3,3.9,7.7,5,6.3z            M5,17.7c-1.1-1.4-1.8-3.1-2-4.8L2,13c0.2,2,1,3.8,2.2,5.4L5,17.7z            M11.1,21c-1.8-0.2-3.4-0.9-4.8-2 l-0.6,.8C7.2,21,9,21.8,11,22L11.1,21z            M22,12c0-5.2-3.9-9.4-9-10l-0.1,1c4.6,.5,8.1,4.3,8.1,9s-3.5,8.5-8.1,9l0.1,1 C18.2,21.5,22,17.2,22,12z">
+                </path>
+              </svg>
+            </button>
+            <div class="options">
+              <li data-speed="2" onclick="setSpeed(this)">2x</li>
+              <li data-speed="1.5" onclick="setSpeed(this)">1.5x</li>
+              <li data-speed="1" class="checked" onclick="setSpeed(this)">Normal</li>
+              <li data-speed="0.75" onclick="setSpeed(this)">0.75x</li>
+              <li data-speed="0.5" onclick="setSpeed(this)">0.5x</li>
+            </div>
+          </div>
+          <div id="fullscreen" onclick="FullScreen()"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="30" viewBox="0 0 325 284.999" preserveAspectRatio="xMidYMid meet"><g transform="matrix(.1 0 0 -.1 0 285)" fill="#fff" stroke="none"><path d="M1944.001 2436.999c-3.003 -8.002 -3.998 -48.997 -2.002 -93.002l3.003 -79.001 159.998 -3.003c87.997 -1.001 165.997 -3.998 172.998 -7 7 -2.002 -107.003 -125.002 -264.998 -284.999 -152.997 -154.999 -279 -283.998 -281.002 -288.002 -1.001 -3.998 27.001 -36.998 62.998 -72.001l65 -65 284.999 284.999c191.002 191.002 286 279 289.003 269.002 3.003 -7 7 -86.001 8.002 -173.998l3.003 -159.998h179.998l3.003 342.998 2.002 341.998h-340.002c-275.002 0 -341.998 -3.003 -346.002 -13"/><path d="M1154.998 1109.999c-153.998 -153.998 -282.997 -276.003 -287.001 -271.999s-9.002 81.998 -9.997 172.003l-3.003 165.002h-179.998l-3.003 -342.998 -2.002 -341.998 341.998 2.002 342.998 3.003v179.998l-159.998 3.003c-87.997 1.001 -165.997 3.998 -172.998 7 -7 2.002 50.999 68.998 139.002 157.001 82.999 83.999 210.002 212.998 282.002 286l131.001 132.002 -63.999 65c-35.002 35.997 -67.002 65 -69.999 65s-131.001 -126.003 -284.999 -280"/></g></svg></div>
+        </div>
+
+
+      </div>
+
+
+      <!-- <span id="customControls">
+
+        <input type="range" id="seekBar" value="0">
+        <input type="range" id="volume" min="0" max="1" step="0.1">
+        <button id="fullscreen" onclick="FullScreen()">⛶</button>
+        <button id="hostToggleBtn" onclick="Hostbtn()">👑 Host</button>
+      </span> -->
+    </div>
+
+    <div id="chat">
+      <ul id="messages"></ul>
+      <div id="inputBar">
+        <input id="msg" placeholder="Type here..." maxlength="600"/>
+        <button onclick="send()">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div id="overlay">
+    <div id="popup">
+      <h3>Enter your name</h3>
+      <input type="text" id="popupName" placeholder="Your name..." autofocus minlength="4" maxlength="16" required pattern="^[a-zA-Z0-9_.]+$" />
+      <button onclick="register()">Join</button>
+    </div>
+  </div> -->
+
+
+</body>
+
+</html>
