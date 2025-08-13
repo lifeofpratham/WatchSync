@@ -16,7 +16,7 @@
 
 ### 🏠 [Homepage](https://github.com/lifeofpratham/WatchSync#readme)
 
-### ✨ [Demo](watchsync.onrender.com)
+### ✨ [Demo](https://watchsync.onrender.com)
 
 ## Install
 
