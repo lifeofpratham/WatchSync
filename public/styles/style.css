@@ -250,6 +250,10 @@ button:hover {
 
   }
 
+  header{
+    height: 100px;
+  }
+
   video {
     width: 100%;
   }
