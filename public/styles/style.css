@@ -10,6 +10,20 @@ body {
   padding: 0;
   
 }
+header {
+  position: sticky;
+  background-color: #000000;
+  padding: 11px;
+  height: 90px;
+  width: 100vw;
+  box-shadow: 0 0 15px #ff2b2baa;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+header img{
+  height: 100%;
+}
 
 .toggleContainer {
   display: flex;
@@ -81,16 +95,6 @@ input:checked+.slider:before {
   font-size: 1.1em;
 }
 
-header {
-  position: sticky;
-  background-color: #000000;
-  padding: 11px;
-  width: 100vw;
-  box-shadow: 0 0 15px #ff2b2baa;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
 
 header h2 {
   margin: 0;
@@ -251,7 +255,7 @@ button:hover {
   }
 
   header{
-    height: 80px;
+    height: 70px;
   }
 
   video {
