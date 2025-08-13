@@ -2,7 +2,7 @@ html, body{
     margin: 0;
     padding: 0;
     color: #fff;
-    background-image: url("Assets/bg-main.jpg");
+    background-image: url("/Assets/bg-main.jpg");
 }
 
 .shade{
