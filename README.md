@@ -50,4 +50,3 @@ Copyright © 2025 [Pratham](https://github.com/lifeofpratham).<br />
 This project is [ISC](https://github.com/lifeofpratham/WatchSync/blob/master/LICENSE) licensed.
 
 ***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
