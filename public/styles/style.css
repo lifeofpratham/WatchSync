@@ -14,7 +14,7 @@ header {
   position: sticky;
   background-color: #000000;
   padding: 11px;
-  height: 90px;
+  height: 70px;
   width: 100vw;
   box-shadow: 0 0 15px #ff2b2baa;
   display: flex;
@@ -255,7 +255,7 @@ button:hover {
   }
 
   header{
-    height: 70px;
+    height: 65px;
   }
 
   video {
