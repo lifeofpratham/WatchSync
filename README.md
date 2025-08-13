@@ -1,6 +1,6 @@
 # WatchSync
 Real-time synchronized video watching app
-<h1 align="center">Welcome to my-project 👋</h1>
+<h1 align="center">Welcome to WatchSync 👋</h1>
 <p>
   <a href="https://www.npmjs.com/package/my-project" target="_blank">
     <img alt="Version" src="https://img.shields.io/npm/v/my-project.svg">
