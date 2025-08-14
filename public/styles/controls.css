@@ -253,14 +253,14 @@ a {
   font-size: 35px;
   padding: 10px 15px;
   border: none;
-  opacity: 0.5;
+  opacity: 0.7;
   color: white;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 
 .video-center-controls div:hover{
-    opacity: 0.9;
+    opacity: 1;
 }
 
 
