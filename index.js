@@ -44,7 +44,7 @@ io.on("connection", (socket) => {
    if (msg != ""){
     const getmsg = escape(msg);
 
-    const safeMsg = `<strong>${socket.username}</strong>: ${getmsg}`;
+    const safeMsg =  `<strong>${socket.username}</strong>: ${getmsg}`;
 
     io.emit('chat', safeMsg);  
 
