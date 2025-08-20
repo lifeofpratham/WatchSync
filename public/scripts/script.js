@@ -145,7 +145,7 @@ function send() {
       msgInput.value = "";
       socket.emit(
         "clear",
-        `<span style="color:#ccc; opacity:0.4; font-style:italic;">Chat cleared by </span> <span style="color:#ccc; opacity:0.8;"><strong>${userName}</strong></span><span class="timestamp">${new Date().toLocaleTimeString()}</span>`
+        `<span style="color:#ccc; opacity:0.4; font-style:italic;">Chat cleared by </span> <span style="color:#ccc; opacity:0.8;"><strong>${userName}</strong></span>`
       );
       return;
     }
