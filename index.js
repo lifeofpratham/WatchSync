@@ -24,7 +24,7 @@ io.on("connection", (socket) => {
     socket.emit('newuserSync', currentVideoState); // Sync new use
      console.log(`✅ ${socket.username} joined.`);
      socket.emit('fetchId', socket.id);
-     io.emit("chat", `<span style="color:#ccc; opacity:0.4;"># ${socket.username} joined....</span><span class="timestamp">${new Date().toLocaleTimeString()}</span>`);
+     io.emit("chat", `<span style="color:#ccc; opacity:0.4;"># ${socket.username} joined....</span>);
   });
 
 
@@ -44,7 +44,7 @@ io.on("connection", (socket) => {
    if (msg != ""){
     const getmsg = escape(msg);
 
-    const safeMsg = `<strong>${socket.username}</strong>: ${getmsg}<span class="timestamp">${new Date().toLocaleTimeString()}</span>`;
+    const safeMsg = `<strong>${socket.username}</strong>: ${getmsg}`;
 
     io.emit('chat', safeMsg);  
 
@@ -64,14 +64,14 @@ socket.on('clear', (msg) => {
     if (isHost) {
       currentHost = socket.id;
        if(oldHost){
-        io.emit('chat', `<span style="color:#cf56ffaa; opacity:1.0;"># <strong>${socket.username}</strong> took host from....  <strong>${oldHost}</strong> </span><span class="timestamp">${new Date().toLocaleTimeString()}</span>`);
+        io.emit('chat', `<span style="color:#cf56ffaa; opacity:1.0;"># <strong>${socket.username}</strong> took host from....  <strong>${oldHost}</strong> </span>`);
        }
        else{
-        io.emit('chat', `<span style="color:#31ff00aa; opacity:1.0;"># ${socket.username} is host now....</span><span class="timestamp">${new Date().toLocaleTimeString()}</span>`); 
+        io.emit('chat', `<span style="color:#31ff00aa; opacity:1.0;"># ${socket.username} is host now....</span>`); 
        }
        oldHost = name;
     } else if (currentHost === socket.id) {
-       io.emit('chat', `<span style="color:#ff2b2baa; opacity:1.0;"># ${name} is not host anymore....</span><span class="timestamp">${new Date().toLocaleTimeString()}</span>`);
+       io.emit('chat', `<span style="color:#ff2b2baa; opacity:1.0;"># ${name} is not host anymore....</span>`);
        currentHost = null;
        oldHost = null;
     }
@@ -82,12 +82,12 @@ socket.on('clear', (msg) => {
   socket.on('disconnect', () => {
     if (socket.username) {
       if(socket.id === currentHost){
-        io.emit('chat', `<span style="color:#ff2b2baa; opacity:1.0;"># ${socket.username} is not host anymore....</span><span class="timestamp">${new Date().toLocaleTimeString()}</span>`);
+        io.emit('chat', `<span style="color:#ff2b2baa; opacity:1.0;"># ${socket.username} is not host anymore....</span>`);
         currentHost = null;
         oldHost = null;
        }
      console.log(`❌ ${socket.username} left.`);
-      io.emit("chat", `<span style="color:#ccc; opacity:0.4;"># ${socket.username} left....</span><span class="timestamp">${new Date().toLocaleTimeString()}</span>`);
+      io.emit("chat", `<span style="color:#ccc; opacity:0.4;"># ${socket.username} left....</span>`);
     } 
 });
 });
