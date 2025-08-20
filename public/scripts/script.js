@@ -131,7 +131,7 @@ socket.on("chat", (msg) => {
     return;
   }
   const li = document.createElement("li");
-  li.innerHTML = msg;
+  li.innerHTML = `${msg}<span class="timestamp">${new Date().toLocaleTimeString()}</span>`;
   messages.appendChild(li);
   messages.scrollTop = messages.scrollHeight;
 });
