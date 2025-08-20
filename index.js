@@ -24,7 +24,7 @@ io.on("connection", (socket) => {
     socket.emit('newuserSync', currentVideoState); // Sync new use
      console.log(`✅ ${socket.username} joined.`);
      socket.emit('fetchId', socket.id);
-     io.emit("chat", `<span style="color:#ccc; opacity:0.4;"># ${socket.username} joined....</span>);
+     io.emit("chat", `<span style="color:#ccc; opacity:0.4;"># ${socket.username} joined....</span>`);
   });
 
 
