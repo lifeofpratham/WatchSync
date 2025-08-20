@@ -87,7 +87,8 @@ html, body{
     font-family: monospace;
     font-size: 24px;
     width: 38vw;
-    max-width: 278px;
+    min-width: 190px;
+    max-width: 230px;
     color: #fff;
     height: auto;
     background-color: transparent;
