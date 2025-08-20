@@ -344,7 +344,7 @@ button {
 }
 
 .played-bar {
-  background-color: red;
+  background-image: linear-gradient(to right, red, #ff008d);
   position: absolute;
   bottom: 0;
   left: 0;
